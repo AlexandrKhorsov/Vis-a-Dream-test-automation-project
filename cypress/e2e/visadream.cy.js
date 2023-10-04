@@ -1,11 +1,15 @@
-const { describe } = require("mocha");
+const { describe, beforeEach } = require("mocha");
 
 describe ('Vis-a-dream tests', ()=>{
+
+  beforeEach(()=>
+      cy.visit("https://www.vis-a-dream.com/")
+     )
 
 
   it('Verify page title and url for Vis-A-Dream.com page', ()=>
       {                           
-        cy.visit("https://www.vis-a-dream.com/")
+        
         cy.title().should('eq','Vis-A-Dream')
         cy.url().should('eq','https://www.vis-a-dream.com/')
       }
@@ -13,7 +17,7 @@ describe ('Vis-a-dream tests', ()=>{
 
    it('Quote Functionality Test', ()=>
       {         
-        cy.visit("https://www.vis-a-dream.com/")
+        
         cy.get("#name-yui_3_17_2_1_1690829999013_1874-fname-field").type("Alexandr")
         cy.get("#name-yui_3_17_2_1_1690829999013_1874-lname-field").type("Khorsov")
         cy.get("#email-yui_3_17_2_1_1690829999013_1875-field").type("hhorsorrdsfrvv@gmail.com")
@@ -46,7 +50,7 @@ describe ('Vis-a-dream tests', ()=>{
       
     it('Website info should be required Test', ()=>
     {         
-      cy.visit("https://www.vis-a-dream.com/")
+      
       cy.get("#name-yui_3_17_2_1_1690829999013_1874-fname-field").type("Alexandr")
       cy.get("#name-yui_3_17_2_1_1690829999013_1874-lname-field").type("Khorsov")
       cy.get("#email-yui_3_17_2_1_1690829999013_1875-field").type("hhorsorrdsfrvv@gmail.com")
